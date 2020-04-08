@@ -1,5 +1,5 @@
 ## AV Lane Following Simulation
-Author: Corwin Stout - corwinjs@umich.edu
+Author: Corwin Stout - corwinjs@umich.edu  
 Date: April 7, 2020
 
 ### Prerequisites:
@@ -28,3 +28,6 @@ Date: April 7, 2020
   - [ctrl]+[alt]+[enter]: Toggle the simulator between full screen mode and
     windowed mode
   - [ctrl]+[alt]+[esc]: Regain control of the mouse pointer
+  
+### Source Files:
+Located at https://github.com/corwinjs/AVLaneFollowingSimulation/
