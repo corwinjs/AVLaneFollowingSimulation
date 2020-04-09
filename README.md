@@ -8,6 +8,7 @@ Date: April 7, 2020
     - Numpy
     - Matplotlib
     - OpenCV (cv2)
+  - If working with the Unreal source code: Unreal Engine version 4.22 or newer (4.22 and 4.24 tested). This is not necessary if you are working with a packaged version of the project from the releases section.
 
 ### Running The Project In Unreal Editor:
   1. Review and make any desired changes to VehicleVision/config.txt 
