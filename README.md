@@ -4,30 +4,50 @@ Date: April 7, 2020
 
 ### Prerequisites:
   - Python 3 installed with the following libraries:
-    - PIL
+    - Pillow
     - Numpy
     - Matplotlib
     - OpenCV (cv2)
 
-### Running The Project:
-  1. In a Command Prompt or your terminal of choice, run LaneTracker.py
-     If it is running correctly, you should see the following text:
+### Running The Project In Unreal Editor:
+  1. Review and make any desired changes to VehicleVision/config.txt 
+  2. If you want to run the project in Autonomous Mode, then in a Command Prompt or your terminal of choice, run LaneTracker.py. If it is running correctly, you should see the following text:
+  ```
        Socket successfully created
        socket binded to 27015
        socket is listening
-  2. Windows: In a File Explorer window, navigate to the VehicleVisionSimulator
-       folder and double-click on VehicleVision.exe to start the simulator
-     Linux/MacOS: Navigate to the VehicleVisionSimulator folder and run
-       LaunchSimulator.sh
+  ```
+  3. Windows/MacOS: In a File Explorer/Finder window, navigate to the VehicleVision folder and double-click on VehicleVision.uproject to start the simulator  
+     Linux: In a terminal, navigate to the VehicleVision directory (where VehicleVision.uproject is located) and run `$Absolute/Path/To/Editor $Absolute/Path/To/VehicleVision.uproject`. On my computer that looks like:
+     ```
+     $ cd AVLaneFollowingSimulation/VehicleVision/
+     $ ~/UnrealEngine4.22/Engine/Binaries/Linux/UE4Editor ~/Desktop/AVLaneFollowingSimulation/VehicleVision/VehicleVision.uproject 
+     
+### Running The Packaged Project:
+  1. Review and make any desired changes to VehicleVision/config.txt 
+  2. If you want to run the project in Autonomous Mode, then in a Command Prompt or your terminal of choice, run LaneTracker.py. If it is running correctly, you should see the following text:
+  ```
+       Socket successfully created
+       socket binded to 27015
+       socket is listening
+  ```
+  3. Windows: In a File Explorer window, navigate to the VehicleVision folder and double-click on VehicleVision.exe to start the simulator  
+     Linux/MacOS: Run VehicleVision/VehicleVision.sh
 
 ### Simulator Controls:
   - [spacebar]: Pause the simulator (the LaneTracker application will wait)
   - [esc]: End the simulation
   - [up],[down],[left],[right]: In manual driving mode, use arrow keys to
     drive the vehicle
-  - [ctrl]+[alt]+[enter]: Toggle the simulator between full screen mode and
+  - Linux/Windows:
+    - [ctrl]+[alt]+[enter]: Toggle the simulator between full screen mode and
     windowed mode
-  - [ctrl]+[alt]+[esc]: Regain control of the mouse pointer
+    - [ctrl]+[alt]+[esc]: Regain control of the mouse pointer
+  - MacOS:
+    - [option]+[return]: Toggle the simulator between full screen mode and windowed mode
   
 ### Source Files:
 Located at https://github.com/corwinjs/AVLaneFollowingSimulation/
+
+### Packaged Project:
+Located in the releases at https://github.com/corwinjs/AVLaneFollowingSimulation/releases
