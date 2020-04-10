@@ -33,7 +33,12 @@ Date: April 7, 2020
        socket is listening
   ```
   3. Windows: In a File Explorer window, navigate to the VehicleVision folder and double-click on VehicleVision.exe to start the simulator  
-     Linux/MacOS: Run VehicleVision/VehicleVision.sh
+     Linux: Run VehicleVision/VehicleVision.sh  
+     MacOS:  
+        1. `$ chmod +x VehicleVision.app/Contents/MacOS/VehicleVision`
+        2. Double-click on VehicleVision.app. You will likely see a pop-up window that says something along the lines of the identity of the developer cannot be confirmed and the app cannot be run.
+        3. Open System Preferences and navigate to Security & Privacy. In the General tab you should see an option to allow VehicleVision to be opened. Check the box to allow this.
+        4. Run VehicleVision/VehicleVision.sh
 
 ### Simulator Controls:
   - [spacebar]: Pause the simulator (the LaneTracker application will wait)
