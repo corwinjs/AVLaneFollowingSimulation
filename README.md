@@ -2,6 +2,8 @@
 Author: Corwin Stout - corwinjs@umich.edu  
 Date: April 7, 2020
 
+![VehicleVisionDemoTrimmed](https://user-images.githubusercontent.com/37941576/79151577-87bf4800-7d7f-11ea-9401-d91e8a487f54.gif)
+
 ### Prerequisites:
   - Python 3 installed with the following libraries:
     - Pillow
