@@ -1,5 +1,4 @@
-## Real Time Lane Detection and Following in Unreal
-Corwin Stout - corwinjs@umich.edu - April 7, 2020
+Written by Corwin Stout (corwinjs@umich.edu) on May 9, 2020
 
 ![VehicleVisionDemoTrimmed](https://user-images.githubusercontent.com/37941576/79151577-87bf4800-7d7f-11ea-9401-d91e8a487f54.gif)
 
@@ -16,4 +15,12 @@ Corwin Stout - corwinjs@umich.edu - April 7, 2020
 ![right_lines_img](https://user-images.githubusercontent.com/37941576/81483413-c74c4900-91f2-11ea-9e52-9ed0b51f294f.png)
 ![sorted_lines_img](https://user-images.githubusercontent.com/37941576/81483415-cca99380-91f2-11ea-9894-ebc1775201b2.png)
 
-
+![car-and-cameras](https://user-images.githubusercontent.com/37941576/81484157-645db080-91f8-11ea-98d0-3da5787c7572.png)
+![config](https://user-images.githubusercontent.com/37941576/81484164-6e7faf00-91f8-11ea-9664-f017383d84f5.png)
+![final-python](https://user-images.githubusercontent.com/37941576/81484170-763f5380-91f8-11ea-936e-9deea175560b.jpg)
+![new-project](https://user-images.githubusercontent.com/37941576/81484174-7b9c9e00-91f8-11ea-88a2-3394c49eb5b9.png)
+![project-diagram-updated](https://user-images.githubusercontent.com/37941576/81484177-848d6f80-91f8-11ea-82a1-c8385bb18064.png)
+![right-turn](https://user-images.githubusercontent.com/37941576/81484178-8820f680-91f8-11ea-8c16-6ca3e4b0382a.png)
+![straightaway](https://user-images.githubusercontent.com/37941576/81484180-8ce5aa80-91f8-11ea-8fad-f473382d4872.png)
+![track](https://user-images.githubusercontent.com/37941576/81484185-940cb880-91f8-11ea-8dc5-5ddfb7ec1e70.png)
+![vision-pipeline](https://user-images.githubusercontent.com/37941576/81484196-9a9b3000-91f8-11ea-8e39-0de2261b28c3.png)
