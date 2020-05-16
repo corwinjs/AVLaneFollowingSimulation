@@ -1,6 +1,8 @@
 Corwin Stout (corwinjs@umich.edu) - May 9, 2020
 
-![VehicleVisionDemoTrimmed](https://user-images.githubusercontent.com/37941576/79151577-87bf4800-7d7f-11ea-9401-d91e8a487f54.gif)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/37941576/79151577-87bf4800-7d7f-11ea-9401-d91e8a487f54.gif" alt="VehicleVisionDemoTrimmed"/>
+</p>
 
 Autonomous driving is making its way from science fiction to reality and is the focus of a large amount of research both in the automotive industry and in academia. One important area of this research is computer vision, which put simply is computers analyzing camera images to extract useful information. In the context autonomous driving, a typical self-driving vehicle is instrumented with several cameras so that, using computer vision algorithms, their images can be analyzed by onboard computers to tell the vehicle about its environment. Computer vision is itself a very broad topic of research. An autonomous vehicle needs to know where pedestrians are, where vehicles are and how fast they are moving, how far away the next stop sign is, and so many other things. The more information that needs to be extracted from camera images, the more complicated the computer vision algorithms become.
 
@@ -11,7 +13,7 @@ The Unreal Engine is a video game engine with excellent graphics rendering and b
 In this article I will first explain the design of the simulation setup and how the two aspects of the system, computer vision and the simulator itself, communicate. I will then walk through how I implemented the lane detection component and the simulator component. At the end I wrap up with the results of my work, links to my software both as source code and in precompiled form, and some instructions for how to use it yourself.
 
 - [System Design](#system-design)
-- [Computer Vision - Lane Detection](#computer-vision-lane-detection)
+- [Computer Vision - Lane Detection](#computer-vision---lane-detection)
 - [Simulation](#simulation)
 - [Results](#results)
 - [Run It Yourself](#run-it-yourself)
@@ -24,10 +26,11 @@ I wrote my simulator application using the Unreal Engine so that I could make us
 
 In order to write my computer vision application using Python and my simulator application using Unreal/C++ and have them work together in real time, I needed a way to have them communicate with each other quickly and consistently. I did this using TCP-based socket libraries. During each tick/frame/step, of the simulation, the physics are applied and the location of the vehicle is updated. The current view of the camera is turned into a flat array of uint8 values and send as a TCP message to the computer vision application. The image is then reconstructed and computer vision techniques are applied to isolate, detect, and locate the two lane lines in the image. Once those lines are found, the midpoint between the two is found at a specified lookahead distance. That center point is then sent as a TCP message back to the simulator. Within the simulator, the vehicle’s controller uses this center point to determine the steering wheel angle for the next time step, and the whole process repeats for every step.
 
-![project-diagram-updated](https://user-images.githubusercontent.com/37941576/81484177-848d6f80-91f8-11ea-82a1-c8385bb18064.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/37941576/81484177-848d6f80-91f8-11ea-82a1-c8385bb18064.png" alt="project-diagram-updated"/>
+</p>
 
 By using this configuration, the computer vision application and the simulator application are kept mostly independent. The only requirement for them to be used together is that both applications need to know what size image is being sent over TCP. This level of independence is very useful for two main reasons. The first, which is discussed earlier as well, is that Unreal applications are developed using C++ whereas computer vision applications are typically developed using Python or Matlab. By keeping the applications independent they each benefit from being written in languages that best suit them. The second reason is that now that the simulator has been developed, others can write their own computer vision applications that can still be compatible as long as they send and receive TCP messages in the same way. Unreal applications can be packaged into executables that can be run on other computers without needing an installation of Unreal Engine or any additional libraries. Someone interested in only working on computer vision can simply download the packaged simulator application and use it to test and run their software without needing to know how to use Unreal Engine at all.
-
 
 ## Computer Vision - Lane Detection
 
@@ -110,15 +113,33 @@ The python script I used to generate these images is located [here](https://gith
 
 I built my simulator code on top of the Vehicle template that comes included with the Unreal Engine. This template comes with a simple asphalt world with lighting already set up, as well as a car that can be controlled using arrow keys on the keyboard. The car also comes with two cameras already set up: one behind the car to provide a third person view of the car during gameplay, and one inside the car in the driver’s seat for a more realistic driving perspective. Having these components already set up was very useful and let me begin work on the simulator-specific code much more quickly.
 
+<!--
 ![new-project](https://user-images.githubusercontent.com/37941576/81484174-7b9c9e00-91f8-11ea-88a2-3394c49eb5b9.png)
+-->
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/37941576/81484174-7b9c9e00-91f8-11ea-88a2-3394c49eb5b9.png" alt="new-project"/>
+</p>
 
 I kept the third person camera where it was and moved the internal camera out to the front and center of the vehicle to serve as the camera that will be sending its view to the computer vision application. 
 
+<!--
 ![car-and-cameras](https://user-images.githubusercontent.com/37941576/81484157-645db080-91f8-11ea-98d0-3da5787c7572.png)
+-->
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/37941576/81484157-645db080-91f8-11ea-98d0-3da5787c7572.png" alt="car-and-cameras"/>
+</p>
 
 I also removed most of the content that came with the map and drew a racetrack using landscape splines. The lines of this track will serve as the lanes that the vehicle follows.
 
+<!--
 ![track](https://user-images.githubusercontent.com/37941576/81484185-940cb880-91f8-11ea-8dc5-5ddfb7ec1e70.png)
+-->
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/37941576/81484185-940cb880-91f8-11ea-8dc5-5ddfb7ec1e70.png" alt="track"/>
+</p>
 
 The first step I took was to set up the communication pipeline from the camera’s view to a TCP message. To do this I needed to add a Render Target, which is essentially a struct that holds an image, for the camera to write its contents to. I then had to put the contents of the Render Target into an array of uint8 values and send it via a TCP connection. Fortunately, Unreal comes with libraries for TCP communication, and those libraries work the same on all supported platforms including Windows, Linux, and MacOS. However, the library is cumbersome to use directly, requiring low level knowledge of sockets and multiple function calls to accomplish conceptually simple tasks such as connecting and sending. Because of this, I took the time to write [my own library](https://github.com/corwinjs/AVLaneFollowingSimulation/blob/master/VehicleVision/Source/VehicleVision/TCPClientSocket.h) that abstracts away a lot of the details of the socket setup and used that in the simulator.  
 
@@ -126,13 +147,21 @@ At each time step, the simulator sends out message containing the camera image d
 
 There are a lot of parameters that are useful to be able to tune when matching the simulator with a computer vision application. During the process of building up my application, I quickly found it tedious to make small changes to these parameters and recompile the whole project every time I wanted to try a different set of values. I decided to develop a process to read a configuration value containing those values instead, so that the values can be set at runtime instead of having to recompile the code. The following configuration file contains parameters for one possible working configuration. 
 
+<!--
 ![config](https://user-images.githubusercontent.com/37941576/81484164-6e7faf00-91f8-11ea-9664-f017383d84f5.png)
+-->
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/37941576/81484164-6e7faf00-91f8-11ea-9664-f017383d84f5.png" alt="config"/>
+</p>
 
 ## Results
 
 Both the lane detection program and the simulator work pretty well! The car is able to stay within its lane on the racetrack perpetually, and the lane detection program is always able to correctly isolate the lane lines within images it receives and determine the lane center. Here is a brief gif showing a screen capture I took with the simulator running on the right and the lane detection program running on the left.
 
-![VehicleVisionDemoTrimmed](https://user-images.githubusercontent.com/37941576/79151577-87bf4800-7d7f-11ea-9401-d91e8a487f54.gif)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/37941576/79151577-87bf4800-7d7f-11ea-9401-d91e8a487f54.gif" alt="VehicleVisionDemoTrimmed"/>
+</p>
 
 Both the lane detection and the simulator have a ton of potential for improvements and additions. It is immediately obvious that the racetrack I quickly put together is nowhere near a realistic driving environment. Real roads have multiple lanes, faded or missing lane lines, intersections, sidewalks, and potholes. There will be other cars, pedestrians, and animals that need to be avoided as well. The time of day will produce different lighting, trees will cast shade, rain will get on camera lenses. In short, there is so much in the real world that is not represented in my simulator. My lane detection program is good enough to work with my nearly empty simulator world, but would it work in a more realistic setting? I hope it would be somewhat robust to some more realism, but it would absolutely fail in a real-world setting. I got away with doing basic line detection in my program, but more advanced feature detection would be necessary to determine what other objects are as they are added to the simulator. If you have any interest in picking up where I am leaving off, please feel free to! In the next section I'll talk about where to find my software and how to get it running.
 
