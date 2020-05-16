@@ -8,15 +8,13 @@ The first piece of visual information someone might think is important for an au
 
 The Unreal Engine is a video game engine with excellent graphics rendering and built-in physics. Implemented in C++, it is also very flexible to work with. Also, it's free and comes with a game template for vehicles. Nice. I decided it would be fun to use Unreal to build a simulator to work with my lane detection program. Within Unreal, I set up a camera on a vehicle and had it drive around while sending the camera images to the lane detector in real time. Then, based on what the lane detection program interpreted from those camera images and sends back to the vehicle, the vehicle knows how far to turn in which direction in order to stay in its lane. If the vehicle always stays on track, then that is a pretty thorough validation of the computer vision program.
 
-In this article I will first walk through how I implemented lane detection, and then I will discuss implementing and connecting an Unreal-based simulator.
-
 In this article I will first explain the design of the simulation setup and how the two aspects of the system, computer vision and the simulator itself, communicate. I will then walk through how I implemented the lane detection component and the simulator component. At the end I wrap up with the results of my work, links to my software both as source code and in precompiled form, and some instructions for how to use it yourself.
 
-- [System Design]()
-- [Computer Vision - Lane Detection]()
-- [Simulation]()
-- [Results]()
-- [Run It Yourself]()
+- [System Design](#system-design)
+- [Computer Vision - Lane Detection](#computer-vision-lane-detection)
+- [Simulation](#simulation)
+- [Results](#results)
+- [Run It Yourself](#run-it-yourself)
 
 ## System Design
 
@@ -106,7 +104,7 @@ The application I developed can optionally display the results of its image proc
 
 ![line_image_grouped](https://user-images.githubusercontent.com/37941576/81483402-b3084c00-91f2-11ea-826a-dd3b8bd3f31c.png)
 
-The python script I used to generate these images is located [here]().
+The python script I used to generate these images is located [here](https://github.com/corwinjs/AVLaneFollowingSimulation/tree/gh-pages/image-generation).
 
 ## Simulation
 
@@ -148,7 +146,7 @@ If you have Unreal Engine installed and you are interested in building my simula
 
 Instructions for running the simulation using either the precompiled or the built from source simulator can be found in the readme on the project's [home GitHub page](https://github.com/corwinjs/AVLaneFollowingSimulation/tree/master#av-lane-following-simulation).
 
-The python script I used to generate the images for the computer vision walkthrough is located [here]().
+The python script I used to generate the images for the computer vision walkthrough is located [here](https://github.com/corwinjs/AVLaneFollowingSimulation/tree/gh-pages/image-generation).
 
 <!--
 ![right-turn](https://user-images.githubusercontent.com/37941576/81484178-8820f680-91f8-11ea-8c16-6ca3e4b0382a.png)
