@@ -1,4 +1,5 @@
-Corwin Stout (corwinjs@umich.edu) - May 9, 2020
+Written by [Corwin Stout](https://www.linkedin.com/in/corwin-stout/), Software Engineer at Ford Autonomous Vehicles LLC.  
+May 9, 2020.
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/37941576/79151577-87bf4800-7d7f-11ea-9401-d91e8a487f54.gif" alt="VehicleVisionDemoTrimmed"/>
