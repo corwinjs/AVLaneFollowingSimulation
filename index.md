@@ -120,29 +120,17 @@ The python script I used to generate these images is located [here](https://gith
 
 I built my simulator code on top of the Vehicle template that comes included with the Unreal Engine. This template comes with a simple asphalt world with lighting already set up, as well as a car that can be controlled using arrow keys on the keyboard. The car also comes with two cameras already set up: one behind the car to provide a third person view of the car during gameplay, and one inside the car in the driver’s seat for a more realistic driving perspective. Having these components already set up was very useful and let me begin work on the simulator-specific code much more quickly.
 
-<!--
-![new-project](https://user-images.githubusercontent.com/37941576/81484174-7b9c9e00-91f8-11ea-88a2-3394c49eb5b9.png)
--->
-
 <p align="center">
   <img src="https://user-images.githubusercontent.com/37941576/81484174-7b9c9e00-91f8-11ea-88a2-3394c49eb5b9.png" alt="new-project"/>
 </p>
 
 I kept the third person camera where it was and moved the internal camera out to the front and center of the vehicle to serve as the camera that will be sending its view to the computer vision application. 
 
-<!--
-![car-and-cameras](https://user-images.githubusercontent.com/37941576/81484157-645db080-91f8-11ea-98d0-3da5787c7572.png)
--->
-
 <p align="center">
   <img src="https://user-images.githubusercontent.com/37941576/81484157-645db080-91f8-11ea-98d0-3da5787c7572.png" alt="car-and-cameras"/>
 </p>
 
 I also removed most of the content that came with the map and drew a racetrack using landscape splines. The lines of this track will serve as the lanes that the vehicle follows.
-
-<!--
-![track](https://user-images.githubusercontent.com/37941576/81484185-940cb880-91f8-11ea-8dc5-5ddfb7ec1e70.png)
--->
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/37941576/81484185-940cb880-91f8-11ea-8dc5-5ddfb7ec1e70.png" alt="track"/>
@@ -153,10 +141,6 @@ The first step I took was to set up the communication pipeline from the camera�
 At each time step, the simulator sends out message containing the camera image data to the computer vision application and receives a message containing a string that says where the center point of the lane in the image is. The string is in the format “column, row”, where the values are the row and column of the pixel within the sent image that corresponds to the lane center point. I set up a very basic lateral control scheme that finds the difference between the center point column received with the image center (512 for an image width of 1024 pixels). This difference is fed to the controller as the error signal. The vehicle’s steering wheel angle is adjusted proportional to that error in an effort to drive that error to zero, which is the same as steering towards the center of the lane. I also created a simple longitudinal controller that uses proportional control to adjust the throttle to maintain the vehicle speed at a specified target speed throughout the entire simulation.  
 
 There are a lot of parameters that are useful to be able to tune when matching the simulator with a computer vision application. During the process of building up my application, I quickly found it tedious to make small changes to these parameters and recompile the whole project every time I wanted to try a different set of values. I decided to develop a process to read a configuration value containing those values instead, so that the values can be set at runtime instead of having to recompile the code. The following configuration file contains parameters for one possible working configuration. 
-
-<!--
-![config](https://user-images.githubusercontent.com/37941576/81484164-6e7faf00-91f8-11ea-9664-f017383d84f5.png)
--->
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/37941576/81484164-6e7faf00-91f8-11ea-9664-f017383d84f5.png" alt="config"/>
