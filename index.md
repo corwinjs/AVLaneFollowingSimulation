@@ -1,6 +1,6 @@
 <p align="center">
   Written by <a href="https://www.linkedin.com/in/corwin-stout/">Corwin Stout</a>, Software Engineer at Ford Autonomous Vehicles LLC.
-  May 9, 2020.
+  <br>May 9, 2020.
 </p>
 
 <p align="center">
