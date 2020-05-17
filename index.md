@@ -1,3 +1,7 @@
+<head>
+    <meta property="og:image" content="https://user-images.githubusercontent.com/37941576/81483402-b3084c00-91f2-11ea-826a-dd3b8bd3f31c.png"/>
+</head>
+
 <p align="center">
   Written by <a href="https://www.linkedin.com/in/corwin-stout/">Corwin Stout</a>, Software Engineer at Ford Autonomous Vehicles LLC.
   <br>May 9, 2020.
