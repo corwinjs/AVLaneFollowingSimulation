@@ -7,6 +7,16 @@
   <img src="https://user-images.githubusercontent.com/37941576/79151577-87bf4800-7d7f-11ea-9401-d91e8a487f54.gif" alt="VehicleVisionDemoTrimmed"/>
 </p>
 
+Table of Contents
+- [Introduction](#introduction)
+- [System Design](#system-design)
+- [Computer Vision - Lane Detection](#computer-vision---lane-detection)
+- [Simulation](#simulation)
+- [Results](#results)
+- [Run It Yourself](#run-it-yourself)
+
+## Introduction
+
 Autonomous driving is making its way from science fiction to reality and is the focus of a large amount of research both in the automotive industry and in academia. One important area of this research is computer vision, which put simply is computers analyzing camera images to extract useful information. In the context autonomous driving, a typical self-driving vehicle is instrumented with several cameras so that, using computer vision algorithms, their images can be analyzed by onboard computers to tell the vehicle about its environment. Computer vision is itself a very broad topic of research. An autonomous vehicle needs to know where pedestrians are, where vehicles are and how fast they are moving, how far away the next stop sign is, and so many other things. The more information that needs to be extracted from camera images, the more complicated the computer vision algorithms become.
 
 The first piece of visual information someone might think is important for an autonomous vehicle is where the lanes are. After all, it needs to know how to stay on the road somehow.  In the interest of learning more about computer vision, I decided to start with lane line detection. Thankfully, because of the rising interest in autonomous vehicles, there are many papers and examples online for approaches to this problem. Perfect! However, validation of computer vision programs tends to come in the form of testing it with a collection of images taken from one database or another. I thought it would be more fun to try a different approach.
@@ -14,12 +24,6 @@ The first piece of visual information someone might think is important for an au
 The Unreal Engine is a video game engine with excellent graphics rendering and built-in physics. Implemented in C++, it is also very flexible to work with. Also, it's free and comes with a game template for vehicles. Nice. I decided it would be fun to use Unreal to build a simulator to work with my lane detection program. Within Unreal, I set up a camera on a vehicle and had it drive around while sending the camera images to the lane detector in real time. Then, based on what the lane detection program interpreted from those camera images and sends back to the vehicle, the vehicle knows how far to turn in which direction in order to stay in its lane. If the vehicle always stays on track, then that is a pretty thorough validation of the computer vision program.
 
 In this article I will first explain the design of the simulation setup and how the two aspects of the system, computer vision and the simulator itself, communicate. I will then walk through how I implemented the lane detection component and the simulator component. At the end I wrap up with the results of my work, links to my software both as source code and in precompiled form, and some instructions for how to use it yourself.
-
-- [System Design](#system-design)
-- [Computer Vision - Lane Detection](#computer-vision---lane-detection)
-- [Simulation](#simulation)
-- [Results](#results)
-- [Run It Yourself](#run-it-yourself)
 
 ## System Design
 
