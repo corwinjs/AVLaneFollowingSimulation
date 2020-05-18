@@ -1,7 +1,3 @@
----
-layout: default
----
-
 <p align="center">
   Written by <a href="https://www.linkedin.com/in/corwin-stout/">Corwin Stout</a>, Software Engineer at Ford Autonomous Vehicles LLC.
   <br>May 9, 2020.
