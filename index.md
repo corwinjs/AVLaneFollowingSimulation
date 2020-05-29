@@ -4,6 +4,10 @@
 </p>
 
 <p align="center">
+  <img src="https://user-images.githubusercontent.com/37941576/83222283-c725d600-a12c-11ea-8d42-e9e59484ac71.png" alt="VehicleVisionDemoTrimmed" style="display: none;" />
+</p>
+
+<p align="center">
   <img src="https://user-images.githubusercontent.com/37941576/79151577-87bf4800-7d7f-11ea-9401-d91e8a487f54.gif" alt="VehicleVisionDemoTrimmed"/>
 </p>
 
